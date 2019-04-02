@@ -122,11 +122,12 @@ class QLearningAgent(ReinforcementAgent):
           HINT: You might want to use util.flipCoin(prob)
           HINT: To pick randomly from a list, use random.choice(list)
         """
-        # Pick Action
+        # Pick random Action
         legalActions = self.getLegalActions(state)
-        action = None
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        action = random.choice(legalActions)
+
+        if util.flipCoin(1 - self.epsilon):
+            action = self.computeActionFromQValues(state)
 
         return action
 
